@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class EnemyMovement : Movement
 {
-    public Vector3[] patrolPoints;
+    public Transform[] patrolPoints;
     private int currentPoint = 0;
 
-    private void Start()
+    private new void Start()
     {
+        base.Start();
         x = 1;
     }
 
@@ -18,7 +19,7 @@ public class EnemyMovement : Movement
 
     private void CheckIfReachedPoint()
     {
-        if (Vector2.Distance(transform.position, patrolPoints[currentPoint]) < 0.5f)
+        if (Vector2.Distance(transform.position, patrolPoints[currentPoint].position) < 1f)
         {
             x *= -1;
             currentPoint++;
